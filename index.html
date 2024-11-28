@@ -1,0 +1,141 @@
+<html>
+	<head>
+
+		<script src="https://unpkg.com/blockly/blockly.min.js"></script> <!-- Blocklyを最新verで維持 -->
+		<script src="blockly_compressed.js"></script> <!-- Blocklyスクリプトを読み込む -->
+		<script src="blocks_compressed.js"></script> <!-- Blocklyの組み込みブロックを読み込む -->
+		<script src="javascript_compressed.js"></script> <!-- 言語生成ツールを読み込む -->
+		<script src="msg/js/en.js"></script> <!-- 言語ファイル(英語)を読み込む -->
+
+    <script src="./console_def.js"></script>
+    <script src="./console.js"></script>
+
+    <script src="workspace.js" defer></script>
+	
+		<title>test file</title> <!-- タイトル -->
+	</head>
+
+	<body>
+        <div id = "block">
+            <div id = "inlineblock">
+                <ul>
+                    <li id = BBP_area>
+                        【プログラミングエリア】
+                        <div id="blocklyDiv" alt = "BBP" style="height: 500px; width: 80%;"></div> <!-- 空のdivを追加してページサイズの設定 -->
+                    </li>
+                    <li id = Qex_area>
+                        【問題】
+                        <img src = "./../img/test_question.png" id = Qex alt = "問題"/>
+                        <br>
+                        【入力例】
+                        <img src = "./../img/test_input.png" id = Qex alt = "入力"/>
+                        <br>
+                        【出力例】
+                        <img src = "./../img/test_output.png" id = Qex alt = "出力"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+		
+
+		<script>
+
+			javascript.javascriptGenerator.forBlock['ave'] = function(block, generator) {
+				var value_v1 = generator.valueToCode(block, 'v1', javascript.Order.ATOMIC);
+				var value_v2 = generator.valueToCode(block, 'v2', javascript.Order.ATOMIC);
+				// TODO: Assemble javascript into code variable.
+				var code = '...';
+				// TODO: Change ORDER_NONE to the correct strength.
+				return [code, Blockly.javascript.ORDER_NONE];
+			};
+			
+			var toolbox = { //ツールタグの構造
+			  "kind": "flyoutToolbox",
+			  "contents": [
+    			{
+    			  "kind": "block",
+    			  "type": "controls_if"
+    			},
+    			{
+    			  "kind": "block",
+    			  "type": "controls_repeat_ext"
+    			},
+    			{
+    			  "kind": "block",
+    			  "type": "logic_compare"
+    			},
+    			{
+    			  "kind": "block",
+    			  "type": "math_number"
+    			},
+    			{
+    			  "kind": "block",
+    			  "type": "math_arithmetic"
+    			},
+    			{
+    			  "kind": "block",
+    			  "type": "text"
+    			},
+    			{
+    			  "kind": "block",
+    			  "type": "text_print"
+    			},
+			  ]
+			}
+			var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox}); // 空のdivにBlocklyを注入
+		
+		</script>
+	</body>
+
+  <style>
+    body{
+        background: wheat; /*背景を小麦色に*/
+        font-family: 'Yu Gothic UI',sans-serif; /*フォントの指定*/
+        font-weight: bold; /*太字に*/
+        font-size: 1.5em; /*フォントサイズを大きく*/
+    }
+
+    #block{
+        display: block;
+        position: relative;
+    }
+    
+    /* ↓id="inlineblock"の中のulに対してCSSを適用*/
+    #inlineblock ul{
+      list-style-type: none; /*箇条書きのポッチを消す*/
+      text-align:center /*左右中央寄せは親要素に対して指定*/
+    }
+    
+    /* ↓id="inlineblock"の中のulの中のliに対してCSSを適用*/
+    #inlineblock ul li{ 
+      display: inline-block; /*inline-blockに変更*/
+    }
+
+    #BBP_area{
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 60%;
+    }
+
+    #blocklyDiv{
+        border: solid 5px skyblue;
+    }
+
+
+    #Qex_area{
+        position: absolute;
+        top: 10px;
+        right: 0;
+        width: 40%;
+    }
+
+    #Qex{
+        display: block;
+        margin: 0 auto;
+        max-width: 80%;
+        border: solid 5px skyblue;
+    }
+  </style>
+</html>
